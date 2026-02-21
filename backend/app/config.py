@@ -1,0 +1,10 @@
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+DATABASE_URL = os.getenv("DATABASE_URL")
+CHROMA_PERSIST_DIR = "./chroma_db"
+CHUNK_SIZE = 500
+CHUNK_OVERLAP = 50

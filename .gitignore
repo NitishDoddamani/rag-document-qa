@@ -1,0 +1,7 @@
+backend/venv/
+backend/.env
+backend/chroma_db/
+backend/models/
+__pycache__/
+*.pyc
+.DS_Store
