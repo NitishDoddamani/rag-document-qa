@@ -13,15 +13,37 @@ async def ask_question(request: QueryRequest):
     if not request.question.strip():
         raise HTTPException(status_code=400, detail="Question cannot be empty")
     
-    relevant_chunks = search_similar_chunks(request.question)
+    # Retrieve chunks with scores
+    scored_chunks = search_similar_chunks(request.question)
     
-    if not relevant_chunks:
-        raise HTTPException(status_code=404, detail="No relevant content found")
+    if not scored_chunks:
+        return {
+            "question": request.question,
+            "answer": "No relevant content found in the document.",
+            "chunks_used": 0,
+            "citations": [],
+            "hallucination_risk": "HIGH",
+            "grounded": False
+        }
     
-    answer = get_answer(request.question, relevant_chunks)
+    # Get answer
+    result = get_answer(request.question, scored_chunks)
+    
+    # Build citations
+    citations = [
+        {
+            "chunk_index": c["chunk_index"],
+            "similarity_score": c["similarity"],
+            "preview": c["text"][:150] + "..."
+        }
+        for c in scored_chunks[:3]  # Top 3 citations
+    ]
     
     return {
         "question": request.question,
-        "answer": answer,
-        "chunks_used": len(relevant_chunks)
+        "answer": result["answer"],
+        "chunks_used": len(scored_chunks),
+        "hallucination_risk": result["hallucination_risk"],
+        "grounded": result["grounded"],
+        "citations": citations
     }

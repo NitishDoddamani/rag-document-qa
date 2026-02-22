@@ -10,3 +10,7 @@ openai
 psycopg2-binary
 sqlalchemy
 google-generativeai
+pdfplumber
+python-docx
+pytesseract
+Pillow
