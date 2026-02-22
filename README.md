@@ -1,43 +1,51 @@
-Here is an improved and complete version of your **README.md** with proper image embedding.  
-I have:
-
-- Placed all 7 images in a dedicated `images/` folder (as you already did)
-- Used relative paths for images (`images/page1.jpg` etc.)
-- Added meaningful alt text and captions
-- Organized them in a clean grid/layout using Markdown + HTML (GitHub supports this)
-- Fixed the broken image links from your original draft
-- Made the overall README more polished and professional
-
-Copy-paste this entire content into your `README.md` file:
-
-```markdown
 # 📄 RAG Document Q&A
 
 A full-stack AI-powered document question answering system built with **FastAPI**, **React**, and local LLMs via **Ollama**.  
 Upload any PDF and ask questions — answers are grounded strictly in your document content with zero hallucination.
 
-## Demo: Example from Uploaded NCERT Chapter
+🖥️ Application Demo (UI Screenshots)
 
-Here are sample pages from the uploaded PDF `lecs110.pdf` (Class 12 Computer Science — Chapter 10: Computer Networks)
+📌 1️⃣ Upload Interface
+<p align="center"> <img src="images/page1.jpg" width="80%" /> </p>
 
-<p align="center">
-  <img src="images/page1.jpg" alt="Chapter 10 Cover Page - Computer Networks" width="45%" />
-  <img src="images/page2.jpg" alt="Activity 10.1 - Identify real-world networks" width="45%" />
-</p>
+Description:
+Clean and minimal interface allowing users to upload PDF documents.
 
-<p align="center">
-  <img src="images/page3.jpg" alt="Figure 10.2 - A computer network" width="45%" />
-  <img src="images/page4.jpg" alt="Figure 10.3 - Timeline of networking evolution (part 1)" width="45%" />
-</p>
+📤 2️⃣ Upload in Progress
+<p align="center"> <img src="images/page2.jpg" width="80%" /> </p>
 
-<p align="center">
-  <img src="images/page5.jpg" alt="Timeline of networking evolution (part 2)" width="45%" />
-  <img src="images/page6.jpg" alt="Timeline of networking evolution (part 3)" width="45%" />
-</p>
+Description:
+Displays real-time upload status while processing the document.
 
-<p align="center">
-  <img src="images/page7.jpg" alt="Chapter content continuation" width="90%" />
-</p>
+✅ 3️⃣ Document Successfully Processed
+<p align="center"> <img src="images/page3.jpg" width="80%" /> </p>
+
+Description:
+Confirms successful upload and shows number of semantic chunks generated.
+
+💬 4️⃣ Asking a Question
+<p align="center"> <img src="images/page4.jpg" width="80%" /> </p>
+
+Description:
+User enters a natural language question related to the uploaded PDF.
+
+⏳ 5️⃣ LLM Thinking State
+<p align="center"> <img src="images/page5.jpg" width="80%" /> </p>
+
+Description:
+Displays progress bar while the model retrieves context and generates answer.
+
+📚 6️⃣ Generated Answer (Grounded Response)
+<p align="center"> <img src="images/page6.jpg" width="80%" /> </p>
+
+Description:
+Structured, markdown-formatted answer generated strictly from document content.
+
+🔎 7️⃣ Continued Detailed Response
+<p align="center"> <img src="images/page7.jpg" width="80%" /> </p>
+
+Description:
+Comprehensive comparison of LAN, MAN, and WAN including characteristics, advantages, and limitations.
 
 > **Note**: The system extracts text using pdfplumber, chunks it semantically, embeds with sentence-transformers, stores in ChromaDB, and generates answers with strict grounding via Ollama.
 
