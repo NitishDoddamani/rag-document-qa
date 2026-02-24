@@ -1,4 +1,7 @@
 import ollama
+import os
+
+client = ollama.Client(host=os.getenv("OLLAMA_HOST", "http://localhost:11434"))
 
 def get_answer(question: str, scored_chunks: list) -> dict:
     
@@ -47,7 +50,7 @@ QUESTION: {question}
 
 ANSWER (strictly from context, well formatted with headings and bullets where needed):"""
 
-    response = ollama.chat(
+    response = client.chat(
         model='command-r7b',
         messages=[{"role": "user", "content": strict_prompt}]
     )

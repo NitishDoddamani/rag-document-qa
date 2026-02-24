@@ -20,7 +20,7 @@ function App() {
     setUploadStatus("Uploading...");
     
     try {
-      const res = await axios.post("http://127.0.0.1:8000/documents/upload", formData);
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/documents/upload`, formData);
       setUploadStatus(`✅ Uploaded! ${res.data.num_chunks} chunks processed`);
       setDocUploaded(true);
     } catch (err) {
@@ -35,7 +35,7 @@ function App() {
     setAnswer("");
     
     try {
-      const res = await axios.post("http://127.0.0.1:8000/query/ask", { question });
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/query/ask`, { question })
       setAnswer(res.data.answer);
     } catch (err) {
       setAnswer("❌ Error getting answer. Try again.");
